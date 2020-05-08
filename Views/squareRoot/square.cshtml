@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Square Root";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To The Highest Square Root App</h1>
+</div>
+
+@{
+    if(ViewBag.Result1 != null && ViewBag.Result2 != null)
+    {
+        if(ViewBag.Result1 == ViewBag.Result2)
+        {
+         <div>
+            <p>you both have same square root of : @ViewBag.Result1 and @ViewBag.Result2, please try again</p>
+        </div>
+        }
+
+      else  if(ViewBag.Result1 <= 0 || ViewBag.Result2 <= 0)
+        {
+            <h6>Error, Please Enter Numbers Greater Than ZERO (0)</h6>
+        }
+
+        else if(ViewBag.Result1 > ViewBag.Result2)
+        {
+           <div>
+            <p>Player One has the highest square root of : @ViewBag.Result1</p>
+        </div> 
+        }
+
+        else if(ViewBag.Result1 < ViewBag.Result2)
+        {
+           <div>
+            <p>Player Two has the highest square root of : @ViewBag.Result2</p>
+        </div> 
+        }
+        
+    }
+}
+
+<div>
+    <form asp-controller="squareRoot" asp-action="square" method="POST">
+        <input type="number" placeholder="Player One Number" name="firstNumber">
+        <input type="number" placeholder="Player Two Number" name="secondNumber">
+        <button>Submit</button>
+    </form>
+</div>
